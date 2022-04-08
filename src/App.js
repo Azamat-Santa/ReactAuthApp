@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Registration from "./pages/Registration/Registration";
+import Authorization from "./pages/Authorization/Authorization";
+import "antd/dist/antd.css";
+import { Spin, Table } from "antd";
+import UserList from './pages/UsersList/UserList';
+const App = () => {
+  const [modalActive, setModalActive] = useState(false);
 
-function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Registration
+              modalActive={modalActive}
+              setModalActive={setModalActive}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/auth"
+          element={
+            <Authorization
+              modalActive={modalActive}
+              setModalActive={setModalActive}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/userList"
+          element={
+            <UserList
+              modalActive={modalActive}
+              setModalActive={setModalActive}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

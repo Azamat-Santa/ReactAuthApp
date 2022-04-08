@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+.auth{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 300px;
+  border: 2px solid rgb(13, 41, 93);
+  padding: 20px 30px;
+  border-radius:10px;
+}
+form h1{
+
+}
+.error{
+  color:red;
+  margin-bottom: 5px;
+}
+
+input{
+  margin-bottom: 15px !important;
+  height: 30px !important;
+  font-size: 20px !important;
+}
+form button{
+border-radius: 10px;
+padding: 10px 0px;
+font-size: 18px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.modal__wrapper{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:rgba(91, 89, 89, 0.574);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  z-index: 3;
+}
+.modal__content{
+background: rgb(255, 252, 252);
+width: 200px;
+border-radius:10px;
+padding: 10px;
+text-align: center;
+}
+.modal__content button{
+  background: rgb(5, 212, 56);
+  border:none;
+  border-radius:5px;
+  padding: 3px 15px;
+}
+.modal__wrapper_none{
+  display: none;
+}
+.loader{
+  width: 20px;
+  height: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 50%;
+
+  animation: .9s linear 0s normal none infinite running rot;
+  -webkit-animation: .9s linear 0s normal none infinite running rot;
+}
+.userOne{
+  text-align: right;
+  font-size: 20px;
+  color: rgb(1, 16, 20);
+  margin: 30px 0;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
+@keyframes rot {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }
