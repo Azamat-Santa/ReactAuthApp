@@ -4,16 +4,12 @@ import { Route, Routes } from "react-router-dom";
 import Registration from "./pages/Registration/Registration";
 import Authorization from "./pages/Authorization/Authorization";
 import "antd/dist/antd.css";
-import { Spin, Table } from "antd";
 import UserList from './pages/UsersList/UserList';
 const App = () => {
   const [modalActive, setModalActive] = useState(false);
-
-
+  
   return (
     <div className="App">
-      
-
       <Routes>
         <Route
           exact

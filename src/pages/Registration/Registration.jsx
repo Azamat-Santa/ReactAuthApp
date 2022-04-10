@@ -1,7 +1,6 @@
-import { Button, Input, Spin } from "antd";
+import { Input, Spin } from "antd";
 import React, { useState } from "react";
 import useInput from "../../component/customHookInput";
-import Loader from "../../component/Loader";
 import Modal from "../../component/Modal";
 
 const Registration = ({modalActive,setModalActive}) => {
@@ -25,9 +24,6 @@ const Registration = ({modalActive,setModalActive}) => {
           },
         }
       );
-      const data = await response.json();
-      console.log(data);
-
       if (response.status === 400) {
         setUserExists(true);
         setLoading(false);
@@ -38,7 +34,6 @@ const Registration = ({modalActive,setModalActive}) => {
         setModalActive(true);
         setLoading(false);
       }
-      console.log(response);
     } catch (error) {
       console.log(error.status);
     }

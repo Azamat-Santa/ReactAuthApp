@@ -2,78 +2,22 @@ import React from 'react'
 import { Table } from 'antd';
 import { Spin } from 'antd';
 import { useEffect } from 'react';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { fetchUsers } from './../../asyncAction/users';
+import { fetchOneUser } from './../../asyncAction/oneUser';
+import { columes } from './columes';
 
 const UserList = () => {
-    const [users, setUsers] = useState();
-    const [user, setUser] = useState();
-    const getUser = async () => {
-      const token = localStorage.getItem("userToken");
-      const req = await fetch(
-        `https://sheltered-dusk-77313.herokuapp.com/users`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      const res = await req.json();
-      const newUsers = res.users.map((user) => {
-        return {
-          key: user.id,
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          age: user.age,
-          role: user.role,
-          status: user.status,
-        };
-      });
-      setUsers(newUsers);
-    };
-    const getOneUsers = async () => {
-      const token = localStorage.getItem("userToken");
-      const req = await fetch(
-        `https://sheltered-dusk-77313.herokuapp.com/users/me`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      const res = await req.json();
-      setUser(res);
-      console.log(res);
-    };
+    const users= useSelector(state=>state.users.users)
+    const user= useSelector(state=>state.users.user)
+    const dispatch = useDispatch()
     useEffect(() => {
-      getUser();
-      getOneUsers();
+      dispatch(fetchUsers(),console.log('lolo'))
+      dispatch(fetchOneUser(),console.log('lolo'))
     }, []);
+    
   
-    const columes = [
-      {
-        title: "Id",
-        dataIndex: "id",
-        key: "key",
-      },
-      {
-        title: "Email",
-        dataIndex: "email",
-        key: "key",
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "key",
-      },
-      {
-        title: "Age",
-        dataIndex: "age",
-        key: "key",
-      },
-      {
-        title: "Role",
-        dataIndex: "role",
-        key: "key",
-      },
-      {
-        title: "Status",
-        dataIndex: "status",
-        key: "key",
-      },
-    ];
   return (
     <div>
         <header>
